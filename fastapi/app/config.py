@@ -8,7 +8,7 @@ from langchain_anthropic import ChatAnthropic
 class Settings(BaseSettings):
     # API
     app_name: str = "Affiliate Sales AI Agent"
-    app_version: str = "0.2.0"
+    app_version: str = "0.3.0"
     debug: bool = False
 
     # Supabase

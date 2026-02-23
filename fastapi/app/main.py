@@ -4,6 +4,7 @@ from datetime import datetime, timezone
 from contextlib import asynccontextmanager
 
 from app.config import get_settings, get_supabase_client, get_langfuse_client
+from app.routers import conversation
 
 
 @asynccontextmanager
@@ -26,7 +27,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title="Affiliate Sales AI Agent",
     description="AI Agent for affiliate sales automation via WhatsApp",
-    version="0.2.0",
+    version="0.3.0",
     lifespan=lifespan,
 )
 
@@ -37,6 +38,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(conversation.router)
 
 
 @app.get("/health")
